@@ -1,12 +1,34 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap");
 @import "tailwindcss";
-@import "tw-animate-css";
+
+@font-face {
+  font-family: "Funnel Display";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/funnel-display-400.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Funnel Display";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/funnel-display-600.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Funnel Display";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/funnel-display-700.ttf") format("truetype");
+}
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: "Outfit", sans-serif;
-  --font-serif: "Libre Baskerville", serif;
+  --font-sans: "Funnel Display", sans-serif;
+  --font-serif: "Funnel Display", sans-serif;
 
   /* Nature Inspired Palette */
   --color-calm-green: #eef5f2; /* Very pale mint/sage background */
@@ -44,32 +66,3 @@
   }
 }
 
-.organic-transition {
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--color-calm-green) 100%
-  );
-}
-
-.calm-shadow {
-  box-shadow: var(--shadow-premium);
-}
-
-.calm-shadow:hover {
-  box-shadow: var(--shadow-premium-hover);
-}
-
-@keyframes slow-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-.animate-slow-float {
-  animation: slow-float 8s ease-in-out infinite;
-}

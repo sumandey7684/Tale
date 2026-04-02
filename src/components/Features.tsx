@@ -7,8 +7,18 @@ import {
   MessageSquare,
   Shield,
   ArrowUpRight,
+  type LucideIcon,
 } from "lucide-react";
 import { cn } from "../lib/utils";
+
+type FeatureCardProps = {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  className?: string;
+  delay: number;
+  children?: React.ReactNode;
+};
 
 const Spotlight = ({
   className,
@@ -64,14 +74,7 @@ const FeatureCard = ({
   className,
   delay,
   children,
-}: {
-  icon: any;
-  title: string;
-  description: string;
-  className?: string;
-  delay: number;
-  children?: React.ReactNode;
-}) => (
+}: FeatureCardProps) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}

@@ -10,12 +10,12 @@ import {
   Brain,
   Waves,
   Play,
-  MoreHorizontal,
   Sun,
   TreePine,
   ArrowRight,
   Heart,
   Search,
+  type LucideIcon,
 } from "lucide-react";
 
 const colors = {
@@ -28,7 +28,25 @@ const colors = {
   white: "bg-white",
 };
 
-const CompactMoodBtn = ({ icon: Icon, label, selected }: any) => (
+type CompactMoodBtnProps = {
+  icon: LucideIcon;
+  label: string;
+  selected?: boolean;
+};
+
+type MiniCardColor = {
+  bg: string;
+  text: string;
+};
+
+type MiniCardProps = {
+  icon: LucideIcon;
+  label: string;
+  count: number;
+  color: MiniCardColor;
+};
+
+const CompactMoodBtn = ({ icon: Icon, label, selected = false }: CompactMoodBtnProps) => (
   <button
     className={`flex items-center gap-2 px-3 py-2 rounded-xl border transition-all ${
       selected
@@ -43,7 +61,7 @@ const CompactMoodBtn = ({ icon: Icon, label, selected }: any) => (
   </button>
 );
 
-const MiniCard = ({ icon: Icon, label, count, color }: any) => (
+const MiniCard = ({ icon: Icon, label, count, color }: MiniCardProps) => (
   <motion.div
     whileHover={{ y: -2 }}
     className="bg-white p-4 rounded-2xl border border-gray-100 flex flex-col justify-between h-28 group cursor-pointer hover:border-[#5E8C61]/30 transition-colors"

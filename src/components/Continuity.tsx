@@ -1,5 +1,20 @@
 import { motion } from "framer-motion";
-import { Cloud, Smartphone, Laptop, Check, Tablet, Watch } from "lucide-react";
+import {
+  Cloud,
+  Smartphone,
+  Laptop,
+  Check,
+  Tablet,
+  Watch,
+  type LucideIcon,
+} from "lucide-react";
+
+type DeviceCardProps = {
+  icon: LucideIcon;
+  label: string;
+  className: string;
+  delay: number;
+};
 
 const ConnectionLine = ({
   rotation,
@@ -24,7 +39,12 @@ const ConnectionLine = ({
   </div>
 );
 
-const DeviceCard = ({ icon: Icon, label, className, delay }: any) => (
+const DeviceCard = ({
+  icon: Icon,
+  label,
+  className,
+  delay,
+}: DeviceCardProps) => (
   <motion.div
     initial={{ opacity: 0, scale: 0.8 }}
     whileInView={{ opacity: 1, scale: 1 }}

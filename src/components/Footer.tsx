@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import type { FormEvent } from "react";
 import {
   Flower,
   Instagram,
@@ -13,6 +14,10 @@ import {
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  const handleNewsletterSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
 
   return (
     <footer className="bg-[#F5F5F2] pt-32 pb-12 border-t border-gray-200/50 overflow-hidden relative">
@@ -106,13 +111,16 @@ export const Footer = () => {
                 <p className="text-[#1C2321]/40 text-sm font-light mb-8 max-w-[200px]">
                   Bite-sized serenity delivered to your mailbox weekly.
                 </p>
-                <form className="relative">
+                <form className="relative" onSubmit={handleNewsletterSubmit}>
                   <input
                     type="email"
                     placeholder="Email address"
                     className="w-full bg-[#F5F5F2] px-6 py-4 rounded-2xl border border-transparent focus:bg-white focus:border-[#5E8C61]/30 focus:outline-none text-sm transition-all"
                   />
-                  <button className="absolute right-2 top-2 bottom-2 bg-[#1C2321] hover:bg-[#5E8C61] text-white px-5 rounded-xl transition-all hover:shadow-lg active:scale-95">
+                  <button
+                    type="submit"
+                    className="absolute right-2 top-2 bottom-2 bg-[#1C2321] hover:bg-[#5E8C61] text-white px-5 rounded-xl transition-all hover:shadow-lg active:scale-95"
+                  >
                     <ArrowRight size={18} />
                   </button>
                 </form>

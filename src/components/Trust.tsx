@@ -1,6 +1,14 @@
 import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 
+type TestimonialCardProps = {
+  quote: string;
+  author: string;
+  role: string;
+  image: string;
+  rating?: number;
+};
+
 const Marquee = ({
   children,
   direction = "left",
@@ -25,7 +33,13 @@ const Marquee = ({
   );
 };
 
-const TestimonialCard = ({ quote, author, role, image, rating = 5 }: any) => (
+const TestimonialCard = ({
+  quote,
+  author,
+  role,
+  image,
+  rating = 5,
+}: TestimonialCardProps) => (
   <motion.div
     initial={{ opacity: 0, scale: 0.9 }}
     whileInView={{ opacity: 1, scale: 1 }}
@@ -45,7 +59,13 @@ const TestimonialCard = ({ quote, author, role, image, rating = 5 }: any) => (
     </p>
     <div className="flex items-center gap-4">
       <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden">
-        <img src={image} alt={author} className="w-full h-full object-cover" />
+        <img
+          src={image}
+          alt={author}
+          className="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
       <div>
         <div className="font-bold text-tale-dark">{author}</div>
@@ -112,6 +132,8 @@ const Trust = () => {
                   <img
                     src={`https://randomuser.me/api/portraits/women/${40 + i}.jpg`}
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
               ))}

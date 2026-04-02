@@ -3,10 +3,27 @@ import { AppleIcon } from "./ui/AppleIcon";
 const Hero = () => {
   return (
     <section className="relative min-h-screen w-full overflow-hidden flex flex-col pt-10 lg:pt-20">
-      <div
-        className="absolute inset-0 z-0 bg-bottom bg-no-repeat bg-cover"
-        style={{ backgroundImage: "url('/grass.png')" }}
-      />
+      <picture className="absolute inset-0 z-0 block">
+        <source
+          type="image/avif"
+          srcSet="/grass-1280.avif 1280w, /grass-1920.avif 1920w"
+          sizes="100vw"
+        />
+        <source
+          type="image/webp"
+          srcSet="/grass-1280.webp 1280w, /grass-1920.webp 1920w"
+          sizes="100vw"
+        />
+        <img
+          src="/grass.png"
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover object-bottom"
+          fetchPriority="high"
+          loading="eager"
+          decoding="async"
+        />
+      </picture>
 
       <div className="relative z-10 flex min-h-screen flex-col px-6  pt-10">
         <div className="mx-auto max-w-4xl text-center">
@@ -27,11 +44,27 @@ const Hero = () => {
         </div>
 
         <div className="mt-auto flex w-full justify-center">
-          <img
-            src="/i-phone.png"
-            alt="iPhone App Preview"
-            className="w-64 sm:w-80 md:w-96 lg:w-lg xl:w-xl drop-shadow-2xl"
-          />
+          <picture>
+            <source
+              type="image/avif"
+              srcSet="/i-phone-320.avif 320w, /i-phone-640.avif 640w, /i-phone-960.avif 960w"
+              sizes="(max-width: 640px) 256px, (max-width: 1024px) 384px, 512px"
+            />
+            <source
+              type="image/webp"
+              srcSet="/i-phone-320.webp 320w, /i-phone-640.webp 640w, /i-phone-960.webp 960w"
+              sizes="(max-width: 640px) 256px, (max-width: 1024px) 384px, 512px"
+            />
+            <img
+              src="/i-phone.png"
+              alt="iPhone App Preview"
+              className="w-64 sm:w-80 md:w-96 lg:w-lg xl:w-xl drop-shadow-2xl"
+              width={512}
+              height={1024}
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
         </div>
       </div>
     </section>

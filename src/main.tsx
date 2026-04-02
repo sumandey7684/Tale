@@ -1,10 +1,24 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import { StrictMode } from "react";
+import { createRoot, hydrateRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.tsx";
 
-createRoot(document.getElementById('root')!).render(
+const rootElement = document.getElementById("root");
+
+if (!rootElement) {
+  throw new Error("Root element #root was not found.");
+}
+
+const app = import.meta.env.DEV ? (
   <StrictMode>
     <App />
-  </StrictMode>,
-)
+  </StrictMode>
+) : (
+  <App />
+);
+
+if (rootElement.hasChildNodes()) {
+  hydrateRoot(rootElement, app);
+} else {
+  createRoot(rootElement).render(app);
+}

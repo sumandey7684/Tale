@@ -1,18 +1,27 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Sparkles, Leaf, Moon, Sun, CheckCircle2 } from "lucide-react";
+import {
+  Sparkles,
+  Leaf,
+  Moon,
+  Sun,
+  CheckCircle2,
+  type LucideIcon,
+} from "lucide-react";
+
+type TimelineItemProps = {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  index: number;
+};
 
 const TimelineItem = ({
   icon: Icon,
   title,
   description,
   index,
-}: {
-  icon: any;
-  title: string;
-  description: string;
-  index: number;
-}) => {
+}: TimelineItemProps) => {
   const itemRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: itemRef,
