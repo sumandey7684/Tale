@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Outfit", sans-serif;
+  --font-serif: "Libre Baskerville", serif;
+
+  /* Nature Inspired Palette */
+  --color-calm-green: #eef5f2; /* Very pale mint/sage background */
+  --color-calm-blue: #e8f3f1; /* misty blue-green */
+  --color-calm-neutral: #faf9f6; /* Off-white / Stone */
+
+  --color-tale-dark: #1e2f23; /* Deep Forest Green */
+  --color-tale-accent: #5e8c61; /* Fresh Fern/Sage Green */
+  --color-tale-warm: #e3d5ca; /* Sand/Warm beige */
+
+  --radius-4xl: 2rem;
+  --radius-5xl: 3rem;
+
+  --shadow-premium: 0 20px 50px rgba(30, 47, 35, 0.05); /* Tinted shadow */
+  --shadow-premium-hover: 0 30px 70px rgba(30, 47, 35, 0.1);
+
+  --color-background: var(--color-calm-neutral);
+  --color-foreground: var(--color-tale-dark);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white text-foreground font-sans selection:bg-indigo-100;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
+  }
+}
+
+.organic-transition {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-calm-green) 100%
+  );
+}
+
+.calm-shadow {
+  box-shadow: var(--shadow-premium);
+}
+
+.calm-shadow:hover {
+  box-shadow: var(--shadow-premium-hover);
+}
+
+@keyframes slow-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-slow-float {
+  animation: slow-float 8s ease-in-out infinite;
+}
